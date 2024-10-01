@@ -1,0 +1,51 @@
+/* src/components/Home.css */
+
+.App {
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  h1, h2 {
+    text-align: center;
+  }
+  
+  .invoice-details {
+    margin-bottom: 20px;
+  }
+  
+  .invoice-details div {
+    margin: 10px 0;
+  }
+  
+  .invoice-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .invoice-table th, .invoice-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
+  
+  .invoice-table th {
+    background-color: #f4f4f4;
+  }
+  
+  button {
+    background-color: #00a6ff;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #006ca6;
+  }
+  
+  .modal-content button.cancel-button {
+    background-color: #f44336;
+    margin-left: 20px; /* Adjust spacing between buttons */
+  }
+
+  
