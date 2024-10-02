@@ -1,6 +1,6 @@
 # About Quotationer_demo 
 
-![Alt text](images/demo.png)
+![Alt text](src/images/demo.png)
 
 
 ## Usage
