@@ -1,11 +1,13 @@
 # About Quotationer_demo 
 
+![Alt text](folder-name/image-file.png)
+
 
 ## Usage
 1. Has both quote genrator and invoice generator.
 2. Forms to enter client details on both pages. 
 3. Input for date. 
-4. Customized bank details depending on what currency payment is involved, options are ksh and dollar.
+4. Customized bank details depending on what currency payment is involved, options are ksh and dollar.(CURRENCY CONVERTER)
 5. Create invoice/quote table - add, edit and remove items from your table.
 6. Discont drop down that reflects on the preview side, options from 0% to 50% discount.
 7. Write additional notes to your client such as how to pay or anything important information to note.
@@ -37,7 +39,7 @@ Lorna Ombati(Me)
 
 ## Note
 
-Please note that there is a live version available that is being used by a client and any attempt to duplicate this project may be copyright infringement.
+Please note that there is a live version available that is being used by a client and any attempt to duplicate this project may be copyright infringement violations.
 
 ## Acknowledgments
 
