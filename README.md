@@ -1,6 +1,6 @@
 # About Quotationer_demo 
 
-![Alt text](folder-name/image-file.png)
+![Alt text](images/demo.png)
 
 
 ## Usage
