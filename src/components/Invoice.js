@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './Invoice.css';
-import primeGearLogo from '../images/primeGearLogo.png';
+import logodemo from '../images/logodemo.png';
+
 import html2pdf from 'html2pdf.js';
 
 function Invoice() {
@@ -446,7 +447,7 @@ function Invoice() {
           <div className="content">
             <div className="quotation-header">
               <div className="logo-section">
-                <img src={primeGearLogo} alt="Company Logo" />
+                <img src={logodemo} alt="Company Logo" />
               </div>
               <div className="quotation-details">
                 <p><strong>Invoice No:</strong> {invoiceId}</p>
