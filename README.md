@@ -41,10 +41,6 @@ Lorna Ombati(Me)
 
 Please note that there is a live version available that is being used by a client and any attempt to duplicate this project may be copyright infringement violations.
 
-## Acknowledgments
-
-Thomas Sankara for the idea, lessons and design flow.
-
 ## Copyright
 
 © 2024 Lorna Ombati. All rights reserved.
