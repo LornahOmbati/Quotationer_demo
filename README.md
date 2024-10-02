@@ -7,9 +7,9 @@
 1. Has both quote genrator and invoice generator.
 2. Forms to enter client details on both pages. 
 3. Input for date. 
-4. Customized bank details depending on what currency payment is involved, options are ksh and dollar.(CURRENCY CONVERTER)
+4. Customized bank details depending on what currency payment is involved, options are ksh and dollar.
 5. Create invoice/quote table - add, edit and remove items from your table.
-6. Discont drop down that reflects on the preview side, options from 0% to 50% discount.
+6. Discount drop down that reflects on the preview side, options from 0% to 50% discount.
 7. Write additional notes to your client such as how to pay or anything important information to note.
 8. 5% insurance addition integrated.
 9. 16% VAT integrated.
