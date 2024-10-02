@@ -13,47 +13,47 @@ function Login() {
   const navigate = useNavigate();
 
   // Handle email and password login
-const handleLogin = (e) => {
-  e.preventDefault();
-  const success = login(email, password); // Calls the AuthContext login function
-  if (!success) {
-    setError('Invalid credentials. Please try again.');
-  } else {
-    // Store first-time login flag in localStorage
-    if (!localStorage.getItem('hasAgreedToTerms')) {
-      localStorage.setItem('firstLogin', 'true');
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const success = login(email, password); // Calls the AuthContext login function
+    if (!success) {
+      setError('Invalid credentials. Please try again.');
+    } else {
+      // Store first-time login flag in localStorage
+      if (!localStorage.getItem('hasAgreedToTerms')) {
+        localStorage.setItem('firstLogin', 'true');
+      }
+      navigate('/'); // Redirect to home page after successful login
     }
-    navigate('/'); // Redirect to home page after successful login
-  }
-};
+  };
 
   // Handle Google login via Firebase
-const handleGoogleSignup = async () => {
-  try {
-    const result = await signInWithPopup(auth, provider);
-    const user = result.user;
-    
-    // Assuming you want to store the Firebase Google user in cookies as well
-    const userData = {
-      email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL,
-    };
+  const handleGoogleSignup = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      
+      // Assuming you want to store the Firebase Google user in cookies as well
+      const userData = {
+        email: user.email,
+        displayName: user.displayName,
+        photoURL: user.photoURL,
+      };
 
-    // Call signup to store Google user in cookies
-    signup(userData.email, 'google-oauth'); // Using 'google-oauth' as a dummy password
+      // Call signup to store Google user in cookies
+      signup(userData.email, 'google-oauth'); // Using 'google-oauth' as a dummy password
 
-    // Store first-time login flag in localStorage
-    if (!localStorage.getItem('hasAgreedToTerms')) {
-      localStorage.setItem('firstLogin', 'true');
+      // Store first-time login flag in localStorage
+      if (!localStorage.getItem('hasAgreedToTerms')) {
+        localStorage.setItem('firstLogin', 'true');
+      }
+      
+      navigate('/'); // Redirect after successful login
+    } catch (error) {
+      console.error("Error signing in with Google: ", error);
+      setError("Error signing in with Google. Please try again.");
     }
-    
-    navigate('/'); // Redirect after successful login
-  } catch (error) {
-    console.error("Error signing in with Google: ", error);
-    setError("Error signing in with Google. Please try again.");
-  }
-};
+  };
 
   const handleForgotPassword = () => {
     // Placeholder functionality for password reset
@@ -92,14 +92,12 @@ const handleGoogleSignup = async () => {
         Continue with Google
       </button>
 
-      <p>Don't have an account? <a href="/signup">Sign up</a></p>
-      
-      <p>
-        Forgot your password?{' '}
-        <span onClick={handleForgotPassword} style={{ color: 'blue', cursor: 'pointer' }}>
-          Reset it here.
-        </span>
+      {/* Message below the Google button */}
+      <p style={{ color: 'red', marginTop: '8px' }}>
+        Please use Google to sign up and log in for security purposes(2FA).
       </p>
+
+      <p>Don't have an account? <a href="/signup">Sign up</a></p>
     </div>
   );
 }
