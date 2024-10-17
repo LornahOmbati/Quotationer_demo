@@ -1,55 +1,60 @@
 // src/context/AuthContext.js
 import React, { createContext, useState, useEffect } from 'react';
-import { useCookies } from 'react-cookie';
+import netlifyIdentity from 'netlify-identity-widget'; // Import Netlify Identity
 
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const [cookies, setCookie, removeCookie] = useCookies(['user', 'isAuthenticated']);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    const storedUser = cookies.user;
-    const storedAuth = cookies.isAuthenticated === 'true';
-
-    if (storedUser && storedAuth) {
-      setUser(storedUser);
+    // Set up event listeners for login, logout, and initialization
+    netlifyIdentity.on("login", (user) => {
+      setUser(user);
       setIsAuthenticated(true);
-    }
-  }, [cookies]);
+      netlifyIdentity.close();
+    });
 
-  const signup = (email, password) => {
-    // Storing user with email and password
-    const newUser = { email, password }; // Store email and password
-    setCookie('user', newUser, { path: '/', maxAge: 3600 * 24 * 7 });
-    setCookie('isAuthenticated', 'true', { path: '/', maxAge: 3600 * 24 * 7 });
-    setUser(newUser);
-    setIsAuthenticated(true);
-  };
+    netlifyIdentity.on("logout", () => {
+      setUser(null);
+      setIsAuthenticated(false);
+    });
 
-  const login = (email, password) => {
-    const storedUser = cookies.user;
+    netlifyIdentity.on("init", (user) => {
+      setUser(user);
+      setIsAuthenticated(!!user);
+    });
 
-    // Verify credentials
-    if (storedUser && storedUser.email === email && storedUser.password === password) {
-      setIsAuthenticated(true);
-      setCookie('isAuthenticated', 'true', { path: '/', maxAge: 3600 * 24 * 7 });
-      return true;
-    } else {
-      return false;
-    }
+    netlifyIdentity.init({
+      APIUrl: 'https://quotationerdemo.netlify.app/.netlify/identity' // Replace with your Netlify site's URL
+    });
+    
+
+    // Initialize Netlify Identity
+    netlifyIdentity.init();
+
+    return () => {
+      netlifyIdentity.off("login");
+      netlifyIdentity.off("logout");
+      netlifyIdentity.off("init");
+    };
+  }, []);
+
+  const login = () => {
+    netlifyIdentity.open();
   };
 
   const logout = () => {
-    setIsAuthenticated(false);
-    setUser(null);
-    removeCookie('user', { path: '/' });
-    removeCookie('isAuthenticated', { path: '/' });
+    netlifyIdentity.logout();
+  };
+
+  const signup = (email, password) => {
+    netlifyIdentity.open(); // Netlify Identity handles both login and signup
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, user, login, signup, logout }}>
+    <AuthContext.Provider value={{ user, login, logout, signup, isAuthenticated }}>
       {children}
     </AuthContext.Provider>
   );
