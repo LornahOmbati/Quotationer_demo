@@ -4,7 +4,7 @@
 
 
 ## Usage
-1. Has both quote genrator and invoice generator.
+1. Has both quote generator and invoice generator.
 2. Forms to enter client details on both pages. 
 3. Input for date. 
 4. Customized bank details depending on what currency payment is involved, options are ksh and dollar.
@@ -27,7 +27,7 @@
 
 ## Contributing
 
-Kindly report any issues, submit feature request. However do not make live adjustments to my code(credit will be given with reports and feature recommendations).
+Kindly report any issues, submit feature requests. However do not make live adjustments to my code(credit will be given with reports and feature recommendations).
 
 ## License
 
